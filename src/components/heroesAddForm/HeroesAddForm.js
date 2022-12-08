@@ -8,7 +8,7 @@
 // Дополнительно:
 // Элементы <option></option> желательно сформировать на базе
 // данных из фильтров
-import { useEffect } from 'react';
+
 import {useHttp} from '../../hooks/http.hook';
 import { Formik, Form, Field, ErrorMessage as FormikErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -23,22 +23,13 @@ const HeroesAddForm = () => {
     const dispatch = useDispatch();
 
     const onAddHero = (hero) => {
-        // dispatch(heroesAdded(hero))
+        dispatch(heroesAdded(hero))
         request("http://localhost:3001/heroes", "POST", JSON.stringify(hero))
             .then(() => dispatch(heroesFetching()));
          request("http://localhost:3001/heroes")
             .then(data => dispatch(heroesFetched(data)))
             .catch(() => dispatch(heroesFetchingError()))
     }
-
-    // useEffect(() => {
-    //     dispatch(heroesFetching());
-    //     request("http://localhost:3001/heroes")
-    //         .then(data => dispatch(heroesFetched(data)))
-    //         .catch(() => dispatch(heroesFetchingError()))
-
-    //     // eslint-disable-next-line
-    // }, [onAddHero]);
 
     return (
        

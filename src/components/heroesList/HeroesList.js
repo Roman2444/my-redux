@@ -17,14 +17,16 @@ const HeroesList = () => {
     const {request} = useHttp();
     const onHeroesDelete = (id) => {
         dispatch(heroesDeleted(id))
-        console.log('delete', id)    }
+        console.log('delete', id) 
+        request(`http://localhost:3001/heroes/${id}`, "DELETE")  
+    }
 
     useEffect(() => {
         dispatch(heroesFetching());
         request("http://localhost:3001/heroes")
             .then(data => dispatch(heroesFetched(data)))
             .catch(() => dispatch(heroesFetchingError()))
-
+        console.log('useEffect', heroes)
         // eslint-disable-next-line
     }, []);
 
