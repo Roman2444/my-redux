@@ -1,29 +1,98 @@
 {
-    "heroes": [
-        {
-            "id": 1,
-            "name": "Первый герой",
-            "description": "Первый герой в рейтинге!",
-            "element": "fire"
-        },
-        {
-            "id": 2,
-            "name": "Неизвестный герой",
-            "description": "Скрывающийся в тени",
-            "element": "wind"
-        },
-        {
-            "id": 3,
-            "name": "Морской герой",
-            "description": "Как аквамен, но не из DC",
-            "element": "water"
-        }
-    ],
-    "filters": [
-        "all",
-        "fire",
-        "water",
-        "wind",
-        "earth"
-    ]
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Первый герой",
+      "description": "Первый герой в рейтинге!",
+      "element": "fire"
+    },
+    {
+      "id": 2,
+      "name": "Неизвестный герой",
+      "description": "Скрывающийся в тени",
+      "element": "wind"
+    },
+    {
+      "id": 3,
+      "name": "Морской герой",
+      "description": "Как аквамен, но не из DC",
+      "element": "water"
+    },
+    {
+      "hero": {
+        "name": "444444444444",
+        "description": "3333333333333",
+        "element": "fire",
+        "id": "6d878d60-f2ff-4911-9572-d0d78e8630be"
+      },
+      "id": 4
+    },
+    {
+      "name": "rrrrrrrrrrrrrrrrr",
+      "description": "rrrrrrrrrrrrr",
+      "element": "fire",
+      "id": "7332eb02-370c-4187-af59-242be18fc141"
+    },
+    {
+      "name": "red",
+      "description": "wwwwwwwwwwww",
+      "element": "earth",
+      "id": "673b7130-0fa9-4779-800c-5a4e1fa0ca7e"
+    },
+    {
+      "name": "eeeeee",
+      "description": "eeeeeeeeee",
+      "element": "wind",
+      "id": "bc588348-1074-4d37-b7ff-042980759ba8"
+    },
+    {
+      "name": "wwwwwwwww",
+      "description": "wwwwwwwwww",
+      "element": "fire",
+      "id": "ff50c58c-0cf7-4085-91ab-b697d0111a16"
+    },
+    {
+      "name": "tessssssssssssst",
+      "description": "****************",
+      "element": "water",
+      "id": "fdf172ec-6f01-4b73-804a-0d40b017f017"
+    },
+    {
+      "name": "eeeeeee",
+      "description": "eeeeeeeeee",
+      "element": "wind",
+      "id": "3e028f6a-a903-4495-8cb1-e38e4bd98e32"
+    },
+    {
+      "name": "yyyyyyyyyy",
+      "description": "yyyyyy",
+      "element": "water",
+      "id": "31f57c97-09e5-4995-b4db-f73f023cf3b4"
+    },
+    {
+      "name": "next",
+      "description": "rrrrrrrr",
+      "element": "fire",
+      "id": "1c778e4c-7c4a-415a-814a-e7a107ed68d7"
+    },
+    {
+      "name": "kkkkkkkk",
+      "description": "kkkkkkkk",
+      "element": "earth",
+      "id": "c103ac75-74dc-4b9c-8045-9434dd0284f3"
+    },
+    {
+      "name": "zzzzzzzzzzzz",
+      "description": "zzzzzzzzzzz",
+      "element": "water",
+      "id": "bf399690-86d7-450f-8b3d-6b759d1acf39"
+    }
+  ],
+  "filters": [
+    "all",
+    "fire",
+    "water",
+    "wind",
+    "earth"
+  ]
 }

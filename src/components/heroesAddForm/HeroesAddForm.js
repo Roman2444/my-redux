@@ -8,20 +8,37 @@
 // Дополнительно:
 // Элементы <option></option> желательно сформировать на базе
 // данных из фильтров
-
+import { useEffect } from 'react';
+import {useHttp} from '../../hooks/http.hook';
 import { Formik, Form, Field, ErrorMessage as FormikErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { v4 as uuidv4 } from 'uuid';
-import {  heroesAdded } from '../../actions';
+import {  heroesAdded, heroesFetching, heroesFetched, heroesFetchingError } from '../../actions';
 import { useDispatch } from 'react-redux';
 
 const HeroesAddForm = () => {
 
+    const {request} = useHttp();
+
     const dispatch = useDispatch();
 
     const onAddHero = (hero) => {
-        dispatch(heroesAdded(hero))
+        // dispatch(heroesAdded(hero))
+        request("http://localhost:3001/heroes", "POST", JSON.stringify(hero))
+            .then(() => dispatch(heroesFetching()));
+         request("http://localhost:3001/heroes")
+            .then(data => dispatch(heroesFetched(data)))
+            .catch(() => dispatch(heroesFetchingError()))
     }
+
+    // useEffect(() => {
+    //     dispatch(heroesFetching());
+    //     request("http://localhost:3001/heroes")
+    //         .then(data => dispatch(heroesFetched(data)))
+    //         .catch(() => dispatch(heroesFetchingError()))
+
+    //     // eslint-disable-next-line
+    // }, [onAddHero]);
 
     return (
        
