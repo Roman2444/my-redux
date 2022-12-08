@@ -16,10 +16,16 @@ export const heroesFetchingError = () => {
         type: 'HEROES_FETCHING_ERROR'
     }
 }
-
 export const heroesDeleted = (id) => {
     return {
         type: 'HEROES_DELETED',
         payload: id
+    }
+}
+
+export const heroesAdded = (hero) => {
+    return {
+        type: 'HEROES_ADDED',
+        payload: hero
     }
 }
