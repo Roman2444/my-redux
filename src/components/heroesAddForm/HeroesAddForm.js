@@ -31,22 +31,22 @@ const HeroesAddForm = () => {
             .catch(() => dispatch(heroesFetchingError()))
     }
 
-    const SelectElement = () => {
+    const SelectElement = (props) => {
         return (
             <>
-                    <Field 
-                        id="element" 
-                        name="element"  
-                        type="element" 
-                        className="form-select" 
-                        as="select">
-                            <option >Я владею элементом...</option>
-                            <option value="fire">Огонь</option>
-                            <option value="water">Вода</option>
-                            <option value="wind">Ветер</option>
-                            <option value="earth">Земля</option>
-                    </Field>
-                    <FormikErrorMessage name="element" />
+                <Field 
+                    id="element" 
+                    name="element"  
+                    type="element" 
+                    className="form-select" 
+                    as="select">
+                        <option >Я владею элементом...</option>
+                        <option value="fire">Огонь</option>
+                        <option value="water">Вода</option>
+                        <option value="wind">Ветер</option>
+                        <option value="earth">Земля</option>
+                </Field>
+                <FormikErrorMessage name="element" />
             </>
         )
     }
@@ -65,9 +65,7 @@ const HeroesAddForm = () => {
                 element: Yup.string().required("выберите элемент героя")
             })}
             onSubmit = {(values, {resetForm} )=> {
-                console.log(JSON.stringify(values, null, 2))
                 values.id = uuidv4()
-                console.log(values)
                 onAddHero(values)
                 resetForm()
             }}

@@ -53,7 +53,7 @@ const reducer = (state = initialState, action) => {
         case 'FILTERS_FETCHED':
             return {
                 ...state,
-                filter: action.payload,
+                filters: action.payload,
                 filtersLoadingStatus: 'idle'
             }
         case 'FILTERS_FETCHING_ERROR':

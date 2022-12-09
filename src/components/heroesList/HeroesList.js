@@ -1,7 +1,7 @@
-import {useHttp} from '../../hooks/http.hook';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import {useHttp} from '../../hooks/http.hook';
 import { heroesFetching, heroesFetched, heroesFetchingError, heroesDeleted } from '../../actions';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
@@ -15,9 +15,9 @@ const HeroesList = () => {
     const {heroes, heroesLoadingStatus, activeFilter} = useSelector(state => state);
     const dispatch = useDispatch();
     const {request} = useHttp();
+
     const onHeroesDelete = (id) => {
         dispatch(heroesDeleted(id))
-        console.log('delete', id) 
         request(`http://localhost:3001/heroes/${id}`, "DELETE")  
     }
 

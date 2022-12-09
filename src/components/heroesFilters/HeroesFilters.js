@@ -7,18 +7,16 @@
 // Представьте, что вы попросили бэкенд-разработчика об этом
 
 import { useEffect } from 'react';
-import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 
 import {useHttp} from '../../hooks/http.hook';
 import { setActiveFilter } from '../../actions';
 import { filtersFetching, filtersFetched, filtersFetchingError, } from '../../actions';
+import Spinner from '../spinner/Spinner';
 
 const HeroesFilters = () => {
 
-    const [activ, setActiv] = useState('')
-
-    const { filtersLoadingStatus, filters} = useSelector(state => state);
+    const { filtersLoadingStatus, filters, activeFilter} = useSelector(state => state);
     const dispatch = useDispatch();
     const {request} = useHttp();
 
@@ -30,22 +28,46 @@ const HeroesFilters = () => {
         // eslint-disable-next-line
     }, []);
 
+    if (filtersLoadingStatus === "loading") {
+        return <Spinner/>;
+    } else if (filtersLoadingStatus === "error") {
+        return <h5 className="text-center mt-5">Ошибка загрузки</h5>
+    }
 
     const onActiveClass = (e) => {
-        setActiv(e.target.name)
         dispatch(setActiveFilter(e.target.name))
     }
+
+    const buttonsData =  filters;
+
+    const colors = {
+        all: 'outline-dark',
+        fire: 'danger',
+        water: 'primary',
+        earth: 'secondary',
+        wind: 'success',
+    }
+
+    const buttons = buttonsData.map(({name, label}) => {
+        const active = activeFilter === name;
+        const clazz = active ? 'active' : '';
+        return (
+            <button type="button"
+                    className={`btn btn-${colors[name]} ${clazz}`}
+                    key={name}
+                    name={name}
+                    onClick={(e)=> onActiveClass(e)}>
+                    {label}
+            </button>
+        )
+    })
 
     return (
         <div className="card shadow-lg mt-4">
             <div className="card-body">
                 <p className="card-text">Отфильтруйте героев по элементам</p>
                 <div className="btn-group">
-                    <button onClick={(e)=> onActiveClass(e)} name='all' className="btn btn-outline-dark active">Все</button>
-                    <button onClick={(e)=> onActiveClass(e)} name='fire' className="btn btn-danger">Огонь</button>
-                    <button onClick={(e)=> onActiveClass(e)} name='water' className="btn btn-primary">Вода</button>
-                    <button onClick={(e)=> onActiveClass(e)} name='earth' className="btn btn-secondary">Земля</button>
-                    <button onClick={(e)=> onActiveClass(e)} name='wind' className="btn btn-success">Ветер</button>
+                    {buttons}
                 </div>
             </div>
         </div>
