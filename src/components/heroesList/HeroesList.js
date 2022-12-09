@@ -1,4 +1,9 @@
-import { useEffect } from 'react';
+// Задача для этого компонента:
+// При клике на "крестик" идет удаление персонажа из общего состояния
+// Усложненная задача:
+// Удаление идет и с json файла при помощи метода DELETE
+
+import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 
@@ -9,21 +14,11 @@ import Spinner from '../spinner/Spinner';
 
 import './heroesList.scss';
 
-// Задача для этого компонента:
-// При клике на "крестик" идет удаление персонажа из общего состояния
-// Усложненная задача:
-// Удаление идет и с json файла при помощи метода DELETE
-
 const HeroesList = () => {
     const {heroes, heroesLoadingStatus, activeFilter} = useSelector(state => state);
     const dispatch = useDispatch();
     const {request} = useHttp();
-
-    const onHeroesDelete = (id) => {
-        dispatch(heroesDeleted(id))
-        request(`http://localhost:3001/heroes/${id}`, "DELETE")  
-    }
-
+    
     useEffect(() => {
         dispatch(heroesFetching());
         request("http://localhost:3001/heroes")
@@ -31,6 +26,15 @@ const HeroesList = () => {
             .catch(() => dispatch(heroesFetchingError()))
         // eslint-disable-next-line
     }, []);
+
+    const onHeroesDelete = useCallback((id) => {
+
+        request(`http://localhost:3001/heroes/${id}`, "DELETE")  
+            .then(dispatch(heroesDeleted(id)))
+            .catch(err => console.log(err));
+        // eslint-disable-next-line
+    }, [request])
+
 
     const filterHeroes = (heroes, filter) => {
         switch (filter) {

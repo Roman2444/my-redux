@@ -17,18 +17,6 @@
       "name": "Морской герой",
       "description": "Как аквамен, но не из DC",
       "element": "water"
-    },
-    {
-      "name": "super-man",
-      "description": "fly, run",
-      "element": "wind",
-      "id": "5a1fca71-37fc-4a08-a81b-790212d08be2"
-    },
-    {
-      "name": "eddie",
-      "description": "fanat of Iron Maiden groupe",
-      "element": "fire",
-      "id": "6a95608e-fd26-4e1b-838e-18e4329e36e0"
     }
   ],
   "filters": [
