@@ -1,13 +1,8 @@
 const initialState = {
     heroes: [],
     heroesLoadingStatus: 'idle',
-    filters: [
-        {"name": "all", "label": "Все"},
-        {"name": "fire", "label": "Огонь"},
-        {"name": "water", "label": "Вода"},
-        {"name": "wind", "label": "Ветер"},
-        {"name": "earth", "label": "Земля"}
-      ],
+    filters: [],
+    filtersLoadingStatus: 'idle',
     activeFilter: 'all'
 }
 
@@ -49,6 +44,22 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 activeFilter: action.payload,
                 heroesLoadingStatus: 'idle'
+            }
+        case 'FILTERS_FETCHING':
+            return {
+                ...state,
+                filtersLoadingStatus: 'loading'
+            }
+        case 'FILTERS_FETCHED':
+            return {
+                ...state,
+                filter: action.payload,
+                filtersLoadingStatus: 'idle'
+            }
+        case 'FILTERS_FETCHING_ERROR':
+            return {
+                ...state,
+                filtersLoadingStatus: 'error'
             }
             
         default: return state

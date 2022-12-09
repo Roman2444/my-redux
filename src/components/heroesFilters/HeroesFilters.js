@@ -6,14 +6,30 @@
 // Изменять json-файл для удобства МОЖНО!
 // Представьте, что вы попросили бэкенд-разработчика об этом
 
+import { useEffect } from 'react';
 import { useState } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import {useHttp} from '../../hooks/http.hook';
 import { setActiveFilter } from '../../actions';
+import { filtersFetching, filtersFetched, filtersFetchingError, } from '../../actions';
 
 const HeroesFilters = () => {
 
     const [activ, setActiv] = useState('')
+
+    const { filtersLoadingStatus, filters} = useSelector(state => state);
     const dispatch = useDispatch();
+    const {request} = useHttp();
+
+    useEffect(() => {
+        dispatch(filtersFetching());
+        request("http://localhost:3001/filters")
+            .then(data => dispatch(filtersFetched(data)))
+            .catch(() => dispatch(filtersFetchingError()))
+        // eslint-disable-next-line
+    }, []);
+
 
     const onActiveClass = (e) => {
         setActiv(e.target.name)
