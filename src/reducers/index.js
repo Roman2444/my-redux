@@ -1,7 +1,14 @@
 const initialState = {
     heroes: [],
     heroesLoadingStatus: 'idle',
-    filters: []
+    filters: [
+        {"name": "all", "label": "Все"},
+        {"name": "fire", "label": "Огонь"},
+        {"name": "water", "label": "Вода"},
+        {"name": "wind", "label": "Ветер"},
+        {"name": "earth", "label": "Земля"}
+      ],
+    activeFilter: 'all'
 }
 
 const reducer = (state = initialState, action) => {
@@ -34,6 +41,13 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 heroes: [...state.heroes, action.payload],
+                heroesLoadingStatus: 'idle'
+            }
+
+        case 'SET_ACTIVE_FILTER':
+            return {
+                ...state,
+                activeFilter: action.payload,
                 heroesLoadingStatus: 'idle'
             }
             

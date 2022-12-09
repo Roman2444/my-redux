@@ -12,7 +12,7 @@ import Spinner from '../spinner/Spinner';
 // Удаление идет и с json файла при помощи метода DELETE
 
 const HeroesList = () => {
-    const {heroes, heroesLoadingStatus} = useSelector(state => state);
+    const {heroes, heroesLoadingStatus, activeFilter} = useSelector(state => state);
     const dispatch = useDispatch();
     const {request} = useHttp();
     const onHeroesDelete = (id) => {
@@ -26,9 +26,25 @@ const HeroesList = () => {
         request("http://localhost:3001/heroes")
             .then(data => dispatch(heroesFetched(data)))
             .catch(() => dispatch(heroesFetchingError()))
-        console.log('useEffect', heroes)
         // eslint-disable-next-line
     }, []);
+
+    const filterHeroes = (heroes, filter) => {
+        switch (filter) {
+            case 'all': 
+                return heroes;
+            case 'fire':  
+                return heroes.filter(heroes => heroes.element === 'fire');
+            case 'water':  
+                return heroes.filter(heroes => heroes.element === 'water');
+            case 'wind':  
+                return heroes.filter(heroes => heroes.element === 'wind');
+            case 'earth':  
+                return heroes.filter(heroes => heroes.element === 'earth');
+            default:
+                return heroes
+          } 
+    }
 
     if (heroesLoadingStatus === "loading") {
         return <Spinner/>;
@@ -46,7 +62,7 @@ const HeroesList = () => {
         })
     }
 
-    const elements = renderHeroesList(heroes);
+    const elements = renderHeroesList(filterHeroes(heroes, activeFilter));
     return (
         <ul>
             {elements}

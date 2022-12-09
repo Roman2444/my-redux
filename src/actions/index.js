@@ -29,3 +29,10 @@ export const heroesAdded = (hero) => {
         payload: hero
     }
 }
+
+export const setActiveFilter = (filter) => {
+    return {
+        type: 'SET_ACTIVE_FILTER',
+        payload: filter
+    }
+}

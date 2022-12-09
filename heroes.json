@@ -19,23 +19,44 @@
       "element": "water"
     },
     {
-      "name": "rrrrrrrrrrrrrrrrr",
-      "description": "rrrrrrrrrrrrr",
-      "element": "fire",
-      "id": "7332eb02-370c-4187-af59-242be18fc141"
+      "name": "super-man",
+      "description": "fly, run",
+      "element": "wind",
+      "id": "5a1fca71-37fc-4a08-a81b-790212d08be2"
     },
     {
-      "name": "**************",
-      "description": "***********",
-      "element": "water",
-      "id": "086adedf-ef93-482b-a002-f0f0800a7693"
+      "name": "eddie",
+      "description": "fanat of Iron Maiden groupe",
+      "element": "fire",
+      "id": "6a95608e-fd26-4e1b-838e-18e4329e36e0"
+    },
+    {
+      "name": "ЗЕмляной человек",
+      "description": "сажать картошку, копать огород",
+      "element": "earth",
+      "id": "9a615ab6-f236-4bff-b433-71473a75b3cc"
     }
   ],
   "filters": [
-    "all",
-    "fire",
-    "water",
-    "wind",
-    "earth"
+    {
+      "name": "all",
+      "label": "Все"
+    },
+    {
+      "name": "fire",
+      "label": "Огонь"
+    },
+    {
+      "name": "water",
+      "label": "Вода"
+    },
+    {
+      "name": "wind",
+      "label": "Ветер"
+    },
+    {
+      "name": "earth",
+      "label": "Земля"
+    }
   ]
 }
