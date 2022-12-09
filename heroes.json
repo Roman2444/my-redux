@@ -29,24 +29,6 @@
       "description": "fanat of Iron Maiden groupe",
       "element": "fire",
       "id": "6a95608e-fd26-4e1b-838e-18e4329e36e0"
-    },
-    {
-      "name": "ЗЕмляной человек",
-      "description": "сажать картошку, копать огород",
-      "element": "earth",
-      "id": "9a615ab6-f236-4bff-b433-71473a75b3cc"
-    },
-    {
-      "name": "СУПЕР-ЛИЗА",
-      "description": "Шпагат(продольный и поперечный), мостик, колесо",
-      "element": "water",
-      "id": "7d4cb0d2-82dd-4b84-9bdf-a4bf37905015"
-    },
-    {
-      "name": "55555555",
-      "description": "555555555",
-      "element": "fire",
-      "id": "459a089b-713e-4996-b605-1c52e7951b4f"
     }
   ],
   "filters": [
