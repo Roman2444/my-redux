@@ -37,20 +37,11 @@ const HeroesList = () => {
 
 
     const filterHeroes = (heroes, filter) => {
-        switch (filter) {
-            case 'all': 
-                return heroes;
-            case 'fire':  
-                return heroes.filter(heroes => heroes.element === 'fire');
-            case 'water':  
-                return heroes.filter(heroes => heroes.element === 'water');
-            case 'wind':  
-                return heroes.filter(heroes => heroes.element === 'wind');
-            case 'earth':  
-                return heroes.filter(heroes => heroes.element === 'earth');
-            default:
-                return heroes
-          } 
+        if (filter === 'all') {
+            return heroes;
+        } else {
+            return heroes.filter(heroes => heroes.element === filter);
+        }
     }
 
     if (heroesLoadingStatus === "loading") {

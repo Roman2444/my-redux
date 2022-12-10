@@ -17,6 +17,12 @@
       "name": "Морской герой",
       "description": "Как аквамен, но не из DC",
       "element": "water"
+    },
+    {
+      "name": "mmmmmmmm",
+      "description": "mmmmmmmmmmmmmm",
+      "element": "water",
+      "id": "404c10c3-3a09-44bc-bddb-b16e290935e3"
     }
   ],
   "filters": [
