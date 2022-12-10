@@ -43,7 +43,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 activeFilter: action.payload,
-                heroesLoadingStatus: 'idle'
             }
         case 'FILTERS_FETCHING':
             return {
