@@ -4,7 +4,7 @@
 // Удаление идет и с json файла при помощи метода DELETE
 
 import { useEffect, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 
 import {useHttp} from '../../hooks/http.hook';
@@ -15,7 +15,9 @@ import Spinner from '../spinner/Spinner';
 import './heroesList.scss';
 
 const HeroesList = () => {
-    const {heroes, heroesLoadingStatus, activeFilter} = useSelector(state => state);
+    const {heroes, heroesLoadingStatus } = useSelector(state => state.heroes);
+    const { activeFilter} = useSelector(state => state.filters, shallowEqual);
+
     const dispatch = useDispatch();
     const {request} = useHttp();
     
@@ -38,7 +40,8 @@ const HeroesList = () => {
 
     const filterHeroes = (heroes, filter) => {
         if (filter === 'all') {
-            return heroes;
+            console.log('all***') ;
+              return heroes;
         } else {
             return heroes.filter(heroes => heroes.element === filter);
         }
