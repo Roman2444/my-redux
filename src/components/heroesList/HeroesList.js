@@ -8,7 +8,7 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 
 import {useHttp} from '../../hooks/http.hook';
-import { heroesFetching, heroesFetched, heroesFetchingError, heroesDeleted } from '../../actions';
+import {fetchHeroes, heroesDeleted } from '../../actions';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 
@@ -18,14 +18,20 @@ const HeroesList = () => {
     const {heroes, heroesLoadingStatus } = useSelector(state => state.heroes);
     const { activeFilter} = useSelector(state => state.filters, shallowEqual);
 
+    const filterHeroes = (heroes, filter) => {
+        if (filter === 'all') {
+            console.log('all***') ;
+              return heroes;
+        } else {
+            return heroes.filter(heroes => heroes.element === filter);
+        }
+    }
+
     const dispatch = useDispatch();
     const {request} = useHttp();
     
     useEffect(() => {
-        dispatch(heroesFetching());
-        request("http://localhost:3001/heroes")
-            .then(data => dispatch(heroesFetched(data)))
-            .catch(() => dispatch(heroesFetchingError()))
+        dispatch(fetchHeroes(request))
         // eslint-disable-next-line
     }, []);
 
@@ -36,16 +42,6 @@ const HeroesList = () => {
             .catch(err => console.log(err));
         // eslint-disable-next-line
     }, [request])
-
-
-    const filterHeroes = (heroes, filter) => {
-        if (filter === 'all') {
-            console.log('all***') ;
-              return heroes;
-        } else {
-            return heroes.filter(heroes => heroes.element === filter);
-        }
-    }
 
     if (heroesLoadingStatus === "loading") {
         return <Spinner/>;
@@ -73,7 +69,6 @@ const HeroesList = () => {
                     <HeroesListItem onHeroesDelete={onHeroesDelete} id={id} {...props}/>
                 </CSSTransition>
             )
-            
         })
     }
 
