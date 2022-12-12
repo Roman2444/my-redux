@@ -45,12 +45,12 @@ export const setActiveFilter = (filter) => {
     }
 }
 
-// export const setActiveFilter = (filter) => (dispatch) => {
-//     setTimeout(() => {dispatch({
-//        type: 'SET_ACTIVE_FILTER',
-//        payload: filter
-//    })}, 1000 ) 
-// }
+export const fetchingFilter = (request) => (dispatch) => {
+    dispatch(filtersFetching());
+    request("http://localhost:3001/filters")
+        .then(data => dispatch(filtersFetched(data)))
+        .catch(() => dispatch(filtersFetchingError()))
+}
 
 
 export const filtersFetching = () => {
