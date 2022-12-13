@@ -8,7 +8,8 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 
 import {useHttp} from '../../hooks/http.hook';
-import {fetchHeroes, heroesDeleted } from '../../actions';
+import {fetchHeroes } from '../../actions';
+import {heroesDeleted} from './heroesSlice'
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 

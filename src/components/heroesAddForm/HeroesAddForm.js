@@ -13,7 +13,7 @@ import {useHttp} from '../../hooks/http.hook';
 import { Formik, Form, Field, ErrorMessage as FormikErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { v4 as uuidv4 } from 'uuid';
-import {  heroesAdded, heroesFetching, heroesFetched, heroesFetchingError } from '../../actions';
+import {  heroesAdded, heroesFetching, heroesFetched, heroesFetchingError } from '../heroesList/heroesSlice';
 import { useDispatch } from 'react-redux';
 
 const HeroesAddForm = () => {
