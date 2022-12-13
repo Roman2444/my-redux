@@ -8,7 +8,7 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 
 import {useHttp} from '../../hooks/http.hook';
-import {fetchHeroes } from '../../actions';
+import {fetchHeroes } from '../heroesList/heroesSlice';
 import {heroesDeleted} from './heroesSlice'
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
@@ -16,8 +16,8 @@ import Spinner from '../spinner/Spinner';
 import './heroesList.scss';
 
 const HeroesList = () => {
-    const {heroes, heroesLoadingStatus } = useSelector(state => state.heroes);
-    const { activeFilter} = useSelector(state => state.filters, shallowEqual);
+    const {heroes, heroesLoadingStatus} = useSelector(state => state.heroes);
+    const {activeFilter} = useSelector(state => state.filters, shallowEqual);
 
     const filterHeroes = (heroes, filter) => {
         if (filter === 'all') {
@@ -31,7 +31,7 @@ const HeroesList = () => {
     const {request} = useHttp();
     
     useEffect(() => {
-        dispatch(fetchHeroes(request))
+        dispatch(fetchHeroes())
         // eslint-disable-next-line
     }, []);
 
