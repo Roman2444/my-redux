@@ -20,7 +20,6 @@ const HeroesList = () => {
 
     const filterHeroes = (heroes, filter) => {
         if (filter === 'all') {
-            console.log('all***') ;
               return heroes;
         } else {
             return heroes.filter(heroes => heroes.element === filter);
