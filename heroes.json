@@ -19,10 +19,10 @@
       "element": "water"
     },
     {
-      "name": "mmmmmmmm",
-      "description": "mmmmmmmmmmmmmm",
-      "element": "water",
-      "id": "404c10c3-3a09-44bc-bddb-b16e290935e3"
+      "name": "Земляной герой",
+      "description": "прячется в земле",
+      "element": "earth",
+      "id": "cbdcf029-e385-4db2-bf56-ce4b76250f13"
     }
   ],
   "filters": [

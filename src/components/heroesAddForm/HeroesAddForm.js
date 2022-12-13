@@ -13,7 +13,7 @@ import {useHttp} from '../../hooks/http.hook';
 import { Formik, Form, Field, ErrorMessage as FormikErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { v4 as uuidv4 } from 'uuid';
-import {  heroesAdded, heroesFetching, heroesFetched, heroesFetchingError } from '../../actions';
+import {  heroesAdded } from '../heroesList/heroesSlice';
 import { useDispatch } from 'react-redux';
 
 const HeroesAddForm = () => {
@@ -23,32 +23,9 @@ const HeroesAddForm = () => {
     const dispatch = useDispatch();
 
     const onAddHero = (hero) => {
-        dispatch(heroesAdded(hero))
         request("http://localhost:3001/heroes", "POST", JSON.stringify(hero))
-            .then(() => dispatch(heroesFetching()));
-         request("http://localhost:3001/heroes")
-            .then(data => dispatch(heroesFetched(data)))
-            .catch(() => dispatch(heroesFetchingError()))
-    }
-
-    const SelectElement = (props) => {
-        return (
-            <>
-                <Field 
-                    id="element" 
-                    name="element"  
-                    type="element" 
-                    className="form-select" 
-                    as="select">
-                        <option >Я владею элементом...</option>
-                        <option value="fire">Огонь</option>
-                        <option value="water">Вода</option>
-                        <option value="wind">Ветер</option>
-                        <option value="earth">Земля</option>
-                </Field>
-                <FormikErrorMessage name="element" />
-            </>
-        )
+            .then(dispatch(heroesAdded(hero)))
+            .catch((err) => console.log(err))
     }
 
     return (
@@ -97,12 +74,23 @@ const HeroesAddForm = () => {
 
                 <div className="mb-3">
                     <label htmlFor="element" className="form-label">Выбрать элемент героя</label>
-                    <SelectElement/>
+                    <Field 
+                        id="element" 
+                        name="element"  
+                        type="element" 
+                        className="form-select" 
+                        as="select">
+                            <option >Я владею элементом...</option>
+                            <option value="fire">Огонь</option>
+                            <option value="water">Вода</option>
+                            <option value="wind">Ветер</option>
+                            <option value="earth">Земля</option>
+                    </Field>
+                    <FormikErrorMessage name="element" />
                 </div>
                 <button type="submit" className="btn btn-primary">Создать</button> 
             </Form>
         </Formik>
-       
     )
 }
 
