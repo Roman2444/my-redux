@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {useHttp} from '../../hooks/http.hook';
-import { setActiveFilter } from '../../actions';
+import { setActiveFilter } from './filtersSlice';
 import { fetchingFilter } from '../../actions';
 import Spinner from '../spinner/Spinner';
 
