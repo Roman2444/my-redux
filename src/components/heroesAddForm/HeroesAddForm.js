@@ -28,26 +28,6 @@ const HeroesAddForm = () => {
             .catch((err) => console.log(err))
     }
 
-    const SelectElement = (props) => {
-        return (
-            <>
-                <Field 
-                    id="element" 
-                    name="element"  
-                    type="element" 
-                    className="form-select" 
-                    as="select">
-                        <option >Я владею элементом...</option>
-                        <option value="fire">Огонь</option>
-                        <option value="water">Вода</option>
-                        <option value="wind">Ветер</option>
-                        <option value="earth">Земля</option>
-                </Field>
-                <FormikErrorMessage name="element" />
-            </>
-        )
-    }
-
     return (
        
         <Formik
@@ -94,12 +74,23 @@ const HeroesAddForm = () => {
 
                 <div className="mb-3">
                     <label htmlFor="element" className="form-label">Выбрать элемент героя</label>
-                    <SelectElement/>
+                    <Field 
+                        id="element" 
+                        name="element"  
+                        type="element" 
+                        className="form-select" 
+                        as="select">
+                            <option >Я владею элементом...</option>
+                            <option value="fire">Огонь</option>
+                            <option value="water">Вода</option>
+                            <option value="wind">Ветер</option>
+                            <option value="earth">Земля</option>
+                    </Field>
+                    <FormikErrorMessage name="element" />
                 </div>
                 <button type="submit" className="btn btn-primary">Создать</button> 
             </Form>
         </Formik>
-       
     )
 }
 
