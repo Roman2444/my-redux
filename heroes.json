@@ -17,12 +17,6 @@
       "name": "Морской герой",
       "description": "Как аквамен, но не из DC",
       "element": "water"
-    },
-    {
-      "name": "Земляной герой",
-      "description": "прячется в земле",
-      "element": "earth",
-      "id": "cbdcf029-e385-4db2-bf56-ce4b76250f13"
     }
   ],
   "filters": [
