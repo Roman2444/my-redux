@@ -19,30 +19,41 @@
       "element": "water"
     },
     {
-      "name": "Земляной герой",
-      "description": "прячется в земле",
+      "name": "jbbu",
+      "description": "kuvkuv",
+      "element": "wind",
+      "id": "e097536f-9ced-4add-9829-6488e8f4e1f8"
+    },
+    {
+      "name": "eeeeeeeeeee",
+      "description": "eeeeeeeeeee",
       "element": "earth",
-      "id": "cbdcf029-e385-4db2-bf56-ce4b76250f13"
+      "id": "bc1597c8-1549-4230-aed4-4aff3a48eb08"
     }
   ],
   "filters": [
     {
+      "id": "all",
       "name": "all",
       "label": "Все"
     },
     {
+      "id": "fire",
       "name": "fire",
       "label": "Огонь"
     },
     {
+      "id": "water",
       "name": "water",
       "label": "Вода"
     },
     {
+      "id": "wind",
       "name": "wind",
       "label": "Ветер"
     },
     {
+      "id": "earth",
       "name": "earth",
       "label": "Земля"
     }

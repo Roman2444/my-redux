@@ -13,7 +13,7 @@ import {useHttp} from '../../hooks/http.hook';
 import { Formik, Form, Field, ErrorMessage as FormikErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { v4 as uuidv4 } from 'uuid';
-import {  heroesAdded } from '../heroesList/heroesSlice';
+import {  heroCreated } from '../heroesList/heroesSlice';
 import { useDispatch } from 'react-redux';
 
 const HeroesAddForm = () => {
@@ -24,7 +24,7 @@ const HeroesAddForm = () => {
 
     const onAddHero = (hero) => {
         request("http://localhost:3001/heroes", "POST", JSON.stringify(hero))
-            .then(dispatch(heroesAdded(hero)))
+            .then(dispatch(heroCreated(hero)))
             .catch((err) => console.log(err))
     }
 

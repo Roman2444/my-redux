@@ -1,5 +1,5 @@
 
-const HeroesListItem = ({name, description, element, onHeroesDelete, id}) => {
+const HeroesListItem = ({name, description, element, onDelete, id}) => {
 
     let elementClassName;
 
@@ -33,7 +33,7 @@ const HeroesListItem = ({name, description, element, onHeroesDelete, id}) => {
                 <p className="card-text">{description}</p>
             </div>
             <span className="position-absolute top-0 start-100 translate-middle badge border rounded-pill bg-light">
-                <button onClick={() => onHeroesDelete(id)} type="button" className="btn-close btn-close" aria-label="Close"></button>
+                <button onClick={onDelete} type="button" className="btn-close btn-close" aria-label="Close"></button>
             </span>
         </li>
     )
