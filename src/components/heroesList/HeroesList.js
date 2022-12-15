@@ -1,18 +1,39 @@
 import {useHttp} from '../../hooks/http.hook';
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 
-import { heroDeleted, fetchHeroes, filteredHeroesSelector } from './heroesSlice';
+import { heroDeleted, fetchHeroes } from './heroesSlice';
 
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
+import {useGetHeroesQuery} from '../../api/apiSlice'
 
 import './heroesList.scss';
 
 const HeroesList = () => {
-    const filteredHeroes = useSelector(filteredHeroesSelector);
-    const heroesLoadingStatus = useSelector(state => state.heroes.heroesLoadingStatus);
+    const {
+        data: heroes = [],
+        isFetching,
+        isLoading, 
+        isSuccess,
+        isError, 
+        error
+    } = useGetHeroesQuery();
+
+    const activeFilter = useSelector(state => state.filters.activeFilter);
+
+    const filteredHeroes = useMemo(() => {
+        const filteredHeroes = heroes.slice();
+
+        if (activeFilter === 'all') {
+            return filteredHeroes;
+        } else {
+            return filteredHeroes.filter(item => item.element === activeFilter);
+        }
+    }, [heroes, activeFilter]);
+
+
     const dispatch = useDispatch();
     const {request} = useHttp();
 
@@ -29,9 +50,9 @@ const HeroesList = () => {
         // eslint-disable-next-line  
     }, [request]);
 
-    if (heroesLoadingStatus === "loading") {
+    if (isLoading || isFetching) {
         return <Spinner/>;
-    } else if (heroesLoadingStatus === "error") {
+    } else if (isError) {
         return <h5 className="text-center mt-5">Ошибка загрузки</h5>
     }
 
