@@ -3,20 +3,12 @@ import {useHttp} from '../../hooks/http.hook';
 import { Formik, Form, Field, ErrorMessage as FormikErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { v4 as uuidv4 } from 'uuid';
-import {  heroCreated } from '../heroesList/heroesSlice';
 import { useDispatch } from 'react-redux';
+import { useCreateHeroMutation } from '../../api/apiSlice';
 
 const HeroesAddForm = () => {
 
-    const {request} = useHttp();
-
-    const dispatch = useDispatch();
-
-    const onAddHero = (hero) => {
-        request("http://localhost:3001/heroes", "POST", JSON.stringify(hero))
-            .then(dispatch(heroCreated(hero)))
-            .catch((err) => console.log(err))
-    }
+    const [createHero, {isLoading}] = useCreateHeroMutation()
 
     return (
        
@@ -33,7 +25,7 @@ const HeroesAddForm = () => {
             })}
             onSubmit = {(values, {resetForm} )=> {
                 values.id = uuidv4()
-                onAddHero(values)
+                createHero(values).unwrap()
                 resetForm()
             }}
         >
