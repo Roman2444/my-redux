@@ -19,10 +19,10 @@
       "element": "water"
     },
     {
-      "name": "eeeeeeeee",
-      "description": "eeeeeeeeeeee",
-      "element": "water",
-      "id": "8c720f3f-af73-4f6e-aa95-a492f460a376"
+      "name": "Земляной человек",
+      "description": "берет силу из земли",
+      "element": "earth",
+      "id": "dbee8e6b-8eba-4900-a0fc-1dd6269f5bcf"
     }
   ],
   "filters": [

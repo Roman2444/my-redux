@@ -16,9 +16,7 @@ const HeroesList = () => {
         data: heroes = [],
         isFetching,
         isLoading, 
-        isSuccess,
         isError, 
-        error
     } = useGetHeroesQuery();
 
     const activeFilter = useSelector(state => state.filters.activeFilter);
