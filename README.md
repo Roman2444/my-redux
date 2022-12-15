@@ -1,4 +1,4 @@
-# food-dist
+# Hero admin panel
 Фронтенд проекта «Hero admin panel» — это интерактивное приложение для работы со списком героев. Stack: JavaScript, React.js, RTK Query + Redux Toolkit, JSX, HTML5, SCSS.
 
 ## Описание проекта
