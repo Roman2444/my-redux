@@ -19,16 +19,10 @@
       "element": "water"
     },
     {
-      "name": "jbbu",
-      "description": "kuvkuv",
-      "element": "wind",
-      "id": "e097536f-9ced-4add-9829-6488e8f4e1f8"
-    },
-    {
-      "name": "eeeeeeeeeee",
-      "description": "eeeeeeeeeee",
+      "name": "Земляной человек",
+      "description": "берет силу из земли",
       "element": "earth",
-      "id": "bc1597c8-1549-4230-aed4-4aff3a48eb08"
+      "id": "dbee8e6b-8eba-4900-a0fc-1dd6269f5bcf"
     }
   ],
   "filters": [
