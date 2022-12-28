@@ -18,12 +18,6 @@ const initialState = filtersAdapter.getInitialState({
 });
 
 
-// const initialState = {
-//     filters: [],
-//     filtersLoadingStatus: 'idle',
-//     activeFilter: 'all'
-// }
-
 const filtersSlice = createSlice({
     name: 'filters',
     initialState,
