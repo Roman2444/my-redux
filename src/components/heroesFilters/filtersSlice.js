@@ -6,7 +6,7 @@ export const fetchFilters = createAsyncThunk(
 
     async () => {
         const {request} = useHttp();
-        return await request("http://localhost:3001/filters")
+        return await request("https://vercel-server-indol.vercel.app/filters")
     }
 )
 
